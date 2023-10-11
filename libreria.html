@@ -25,14 +25,19 @@
         <div class="col">
           <p class="d-flex justify-content-end gap-1">
             <button
-              class="btn btn-primary"
+              class="btn btn-primary position-relative"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#collapseExample"
               aria-expanded="false"
               aria-controls="collapseExample"
             >
-              <i class="bi bi-cart"></i>
+              <i class="bi bi-cart"></i
+              ><span
+                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                id="badge"
+                >0</span
+              >
             </button>
           </p>
           <div class="collapse" id="collapseExample">

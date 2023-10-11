@@ -27,6 +27,8 @@ const eliminaCard = function (e) {
   // il metodo closest() trova il match più vicino tra l'elemento su cui lo chiamate e il selettore CSS che inserite tra le () risalendo il dom
 }
 
+let conteggioCarrello = 0
+
 const aggiungiAlCarrello = function (e) {
   // cliccando il bottone add to cart mi deve stampare il titolo del libro nel carrello
   //quindi mi serve un selettore che mi ritrova h5
@@ -52,8 +54,20 @@ const aggiungiAlCarrello = function (e) {
   deleteButton.addEventListener('click', function (e) {
     const removeLi = e.target.parentElement
     //parent element sarebbe li
+    //
+    //rimuovi elemento dalla lista
     removeLi.remove()
+    //
+    //decrementa il conteggio
+    conteggioCarrello--
+    const badgeCarrello = document.getElementById('badge')
+    badgeCarrello.innerText = conteggioCarrello
+    //
   })
+  //incremeta il conteggio degli elementi nel carrello e lo applica al badge del carrello
+  conteggioCarrello++
+  const badgeCarrello = document.getElementById('badge')
+  badgeCarrello.innerText = conteggioCarrello
 }
 
 fetch('https://striveschool-api.herokuapp.com/books')
@@ -73,7 +87,7 @@ fetch('https://striveschool-api.herokuapp.com/books')
     console.log(err)
   })
 
-// primo approccio (folle) creando ogni singolo elemento e appenderlo, sopra invece hoo creato un innerHTML
+// primo approccio (folle ma funzionante!) creando ogni singolo elemento e appenderlo, sopra invece hoo creato un innerHTML
 
 // const libreriaRow = document.getElementById('libreriaRow')
 //     libreria.forEach((libreria) => {
